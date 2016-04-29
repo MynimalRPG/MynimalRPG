@@ -6,7 +6,7 @@ Development will begin soon.
 1) Kevin Cho
 2) Ronald Macmaster
 
-### Ideas
+## Ideas
 
 **Gameplay**  
 * Player goes to different locations
