@@ -10,9 +10,9 @@ package GUI;
 /**
  * Graphical Representation of an RPG Player
  */
-public class Player{
+public class GPlayer{
 
-	public Player(){
+	public GPlayer(){
 
 	}
 
