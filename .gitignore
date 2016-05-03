@@ -1,3 +1,4 @@
+# Eclipse ignores
 .metadata
 bin/
 tmp/
@@ -10,3 +11,7 @@ local.properties
 .loadpath
 .recommenders
 .project
+.classpath
+
+.DS_Store
+.gitignore
