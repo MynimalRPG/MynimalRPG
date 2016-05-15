@@ -19,7 +19,6 @@ public class Quest{
 		questId = quest;
 		reward = questreward;
 		questDescription = description;
-		
 	}
 
 }
