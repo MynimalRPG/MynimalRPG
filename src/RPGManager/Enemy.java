@@ -12,8 +12,40 @@ package RPGManager;
  */
 public class Enemy{
 
-	public Enemy(){
-
+	// enemy data
+	public String name;
+	
+	// enemy static stats
+	private byte hp;
+	private byte offense;
+	private byte defense;
+	
+	// enemy gameplay stats
+	private boolean alive;
+	private byte lifepoints;
+	
+	
+	public Enemy(String name, byte hp, byte offense, byte defense){
+		this.hp = hp;
+		this.offense = offense;
+		this.defense = defense;
+		
+		lifepoints = hp;
+		alive = true;
+	}
+	
+	/**
+	 * Take a lifepoints hit.
+	 * @param damage
+	 */
+	public void takeDamage(byte damage){
+		byte buffer = (byte)(defense * Math.random()); 
+		lifepoints -= damage / buffer;
+		
+		// lifepoints check
+		if(lifepoints <= 0){
+			alive = false;
+		}
 	}
 
 }
