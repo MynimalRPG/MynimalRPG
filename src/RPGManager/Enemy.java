@@ -30,6 +30,7 @@ public class Enemy{
 		this.offense = offense;
 		this.defense = defense;
 		
+
 		lifepoints = hp;
 		alive = true;
 	}
@@ -41,7 +42,7 @@ public class Enemy{
 	public void takeDamage(byte damage){
 		byte buffer = (byte)(defense * Math.random()); 
 		lifepoints -= damage / buffer;
-		
+
 		// lifepoints check
 		if(lifepoints <= 0){
 			alive = false;

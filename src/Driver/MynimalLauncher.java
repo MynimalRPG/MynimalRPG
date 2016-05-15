@@ -45,19 +45,19 @@ public final class MynimalLauncher{
 			
 			// build username data structures
 			while((userdata = userfile.readLine()) != null){
-				String[] tokens = userdata.split(" ");
+				String[] tokens = userdata.split("\t");
 				String username = tokens[0];
 				String password = tokens[1];
 				
-				playerSet.add(username);
+				playerSet.add(username.toLowerCase());
 				passwordMap.put(username, password);
 			}
 			
 			// close streams
-			fstream.close();
 			userfile.close();
+			fstream.close();
 		}
-		catch(Exception e){
+		catch(Exception e){e.printStackTrace();
 			System.err.println("Users file not found.");
 		}
 	}
@@ -78,11 +78,11 @@ public final class MynimalLauncher{
 			}
 			
 			// close streams
-			fstream.close();
 			userfile.close();
+			fstream.close();
 		}
 		catch(Exception e){
-			System.err.println("Users file not found.");
+			System.err.println("Users file not found. Close failed!");
 		}
 	}
 	
@@ -97,7 +97,7 @@ public final class MynimalLauncher{
 		// poll valid username
 		System.out.println("Please choose a username: ");
 		username = input.nextLine().split("\t")[0];
-		while(playerSet.contains(username)){
+		while(playerSet.contains(username.toLowerCase())){
 			System.out.println("Username taken! Please choose another username: ");
 			username = input.nextLine().split(" ")[0];
 		}
@@ -107,13 +107,21 @@ public final class MynimalLauncher{
 		password = input.nextLine();
 		while(password.split(" ").length > 1){
 			System.out.println("Password must be one word! Please choose another password: ");
-			username = input.nextLine().split(" ")[0];
+			password = input.nextLine();
 		}
 		
 		// add new user
 		System.out.println("Welcome to MynimalRPG!");
-		playerSet.add(username);
+		playerSet.add(username.toLowerCase());
+		passwordMap.put(username, password);
 		input.close();
+	}
+	
+	/**
+	 * login the user on the current session
+	 */
+	public static void login(){
+
 	}
 
 }
