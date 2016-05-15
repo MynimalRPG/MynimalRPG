@@ -1,15 +1,18 @@
 package Driver;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class GMynimalClient extends JFrame{
 
-	private JPanel contentPane;
+	private JPanel currentScreen;
+	private Map<String, JPanel> screens = new HashMap<String, JPanel>();
 
 	/**
 	 * Launch the application.
@@ -20,6 +23,7 @@ public class GMynimalClient extends JFrame{
 				try{
 					// init the RPG
 					MynimalLauncher.openMynimal();
+					
 					// init gui
 					GMynimalClient frame = new GMynimalClient();
 					frame.setVisible(true);
@@ -37,12 +41,28 @@ public class GMynimalClient extends JFrame{
 	 * Create the frame.
 	 */
 	public GMynimalClient(){
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ronald\\Documents\\GitHub\\MynimalRPG\\rsc\\mynimal_lg.png"));
+		setTitle("Mynimal RPG");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		
+		// initialize screen map
+		screens.put("login", new GLogin(this));
+		
+		currentScreen = screens.get("login");
+		setContentPane(currentScreen);
+	}
+	
+	/**
+	 * Switches the current screen on the client
+	 * @param screenName
+	 */
+	public void switchScreens(String screenName){
+		JPanel screen = screens.get(screenName);
+		if(screen != null){
+			currentScreen = screen;
+			setContentPane(currentScreen);
+		}
 	}
 
 }
