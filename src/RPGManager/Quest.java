@@ -15,10 +15,26 @@ public class Quest{
 	private byte reward;
 	private String questDescription;
 	
-	public Quest( byte quest, byte questreward, String description){
-		questId = quest;
-		reward = questreward;
-		questDescription = description;
+	public Quest( byte questId, byte reward, String questDescription){
+		this.questId = questId;
+		this.reward = reward;
+		this.questDescription = questDescription;
 	}
+
+	public byte getquestID(){
+		return questId;
+	}
+
+	public byte getReward(){
+		return reward;
+	}
+	public byte getDescription(){
+		return questDescription;
+	}
+
+	public void questTrigger(){
+
+	}
+
 
 }
