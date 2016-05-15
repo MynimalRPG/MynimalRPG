@@ -28,7 +28,6 @@ public final class MynimalLauncher{
 	public static void main(String[] args){
 		System.out.println("Launching Mynimal, please wait...");
 		openMynimal();
-		createUser();
 		closeMynimal();
 		
 	}
@@ -89,32 +88,44 @@ public final class MynimalLauncher{
 	/**
 	 * Creates a new Mynimal RPG user
 	 */
-	public static void createUser(){
-		// read a username and password
-		String username = "", password = "";
-		Scanner input = new Scanner(System.in);
-		
-		// poll valid username
-		System.out.println("Please choose a username: ");
-		username = input.nextLine().split("\t")[0];
-		while(playerSet.contains(username.toLowerCase())){
-			System.out.println("Username taken! Please choose another username: ");
-			username = input.nextLine().split(" ")[0];
-		}
-		
-		// poll valid password
-		System.out.println("Please choose a password: ");
-		password = input.nextLine();
-		while(password.split(" ").length > 1){
-			System.out.println("Password must be one word! Please choose another password: ");
-			password = input.nextLine();
-		}
-		
-		// add new user
+	public static void createUser(String username, String password){
+		// add new user to the system
 		System.out.println("Welcome to MynimalRPG!");
 		playerSet.add(username.toLowerCase());
 		passwordMap.put(username, password);
-		input.close();
+	}
+	
+	/**
+	 * Check if the username is valid and not yet taken
+	 * @param username
+	 * @return
+	 */
+	public static boolean validUsername(String username){
+		// banned characters
+		if(username.contains(" ")){
+			return false;
+		}
+		// username taken
+		if(playerSet.contains(username.toLowerCase())){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Check if the password is valid
+	 * @param username
+	 * @return
+	 */
+	public static boolean validPassword(String password){
+		// banned characters
+		if(password.contains(" ")){
+			return false;
+		}
+		if(password.length() < 5){
+			return false;
+		}
+		return true;
 	}
 	
 	/**
