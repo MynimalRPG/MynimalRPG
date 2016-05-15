@@ -11,9 +11,15 @@ package RPGManager;
  * Interface for a Mynimal RPG Quest
  */
 public class Quest{
-
-	public Quest(){
-
+	private byte questId;
+	private byte reward;
+	private String questDescription;
+	
+	public Quest( byte quest, byte questreward, String description){
+		questId = quest;
+		reward = questreward;
+		questDescription = description;
+		
 	}
 
 }

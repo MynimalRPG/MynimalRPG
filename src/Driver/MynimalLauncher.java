@@ -5,6 +5,7 @@
  * @author Kevin Cho
  * @version 1.01 4/30/2016
  ************************************************************/
+
 package Driver;
 
 import java.io.BufferedReader;
@@ -33,7 +34,7 @@ public final class MynimalLauncher{
 	}
 	
 	/**
-	 * Initializethe RPG
+	 * Initialize the RPG
 	 */
 	public static void openMynimal(){
 		try{

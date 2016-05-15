@@ -7,6 +7,7 @@
  ************************************************************/
 package RPGManager;
 
+
 /**
  * Interface for a Mynimal RPG Player
  */
@@ -17,7 +18,7 @@ public class Player{
 
 	// player static stats
 	private byte hp;
-	private byte offense;
+	private byte attack;
 	private byte defense;
 
 	// player gameplay stats
@@ -26,7 +27,7 @@ public class Player{
 
 	public Player(){
 		hp = 10;
-		offense = 1;
+		attack = 1;
 		defense = 1;
 		lifepoints = hp;
 		alive = true;
@@ -38,7 +39,7 @@ public class Player{
 	 * @param otherPlayer
 	 */
 	public void attack(Player opponent){
-		byte damage = (byte)((offense + 1) * Math.random());
+		byte damage = (byte)((attack + 1) * Math.random());
 		opponent.takeDamage(damage);
 	}
 
@@ -48,7 +49,7 @@ public class Player{
 	 * @param otherPlayer
 	 */
 	public void attack(Enemy opponent){
-		byte damage = (byte)((offense + 1) * Math.random());
+		byte damage = (byte)((attack + 1) * Math.random());
 		opponent.takeDamage(damage);
 	}
 
@@ -62,9 +63,15 @@ public class Player{
 		lifepoints -= damage / buffer;
 
 		// lifepoints check
-		if(lifepoints <= 0){
-			alive = false;
-		}
+		lifeStatus();
 	}
 
+	public void lifeStatus(){
+		if(lifepoints <= 0 ){
+			alive = false;
+		}
+		alive = true;
+	}
+
+	
 }
