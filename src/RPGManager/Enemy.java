@@ -13,9 +13,10 @@ package RPGManager;
 public class Enemy{
 
 	// enemy data
-	public String name;
+	public String name; // why is this public? Maybe i'm the confused one
 	
 	// enemy static stats
+	private byte id;
 	private byte hp;
 	private byte offense;
 	private byte defense;
@@ -25,11 +26,11 @@ public class Enemy{
 	private byte lifepoints;
 	
 	
-	public Enemy(String name, byte hp, byte offense, byte defense){
+	public Enemy(String name, byte id, byte hp, byte offense, byte defense){
 		this.hp = hp;
 		this.offense = offense;
 		this.defense = defense;
-		
+		this.id = id;
 
 		lifepoints = hp;
 		alive = true;
