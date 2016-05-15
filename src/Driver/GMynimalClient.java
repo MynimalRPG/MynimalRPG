@@ -1,12 +1,13 @@
 package Driver;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class GMynimalClient extends JFrame{
@@ -46,10 +47,10 @@ public class GMynimalClient extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
-		// initialize screen map
-		screens.put("login", new GLogin(this));
-		
-		currentScreen = screens.get("login");
+		currentScreen = new JPanel(new CardLayout());
+		// initialize screen map	
+		currentScreen.add("login", new GLogin(this));
+		currentScreen.add("signup", new GSignup(this));
 		setContentPane(currentScreen);
 	}
 	
@@ -57,12 +58,9 @@ public class GMynimalClient extends JFrame{
 	 * Switches the current screen on the client
 	 * @param screenName
 	 */
-	public void switchScreens(String screenName){
-		JPanel screen = screens.get(screenName);
-		if(screen != null){
-			currentScreen = screen;
-			setContentPane(currentScreen);
-		}
+	public void setScreen(String screenName){
+	    CardLayout cl = (CardLayout)(currentScreen.getLayout());
+	    cl.show(currentScreen, screenName);
 	}
 
 }

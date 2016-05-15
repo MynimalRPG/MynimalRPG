@@ -33,7 +33,7 @@ public class GLogin extends JPanel{
 	private final JLabel lblMynimalRpg = new JLabel("Mynimal RPG");
 
 	/**
-	 * Create the pane.
+	 * Create the panel
 	 */
 	public GLogin(GMynimalClient parent){
 		setBackground(SystemColor.menu);
@@ -69,8 +69,8 @@ public class GLogin extends JPanel{
 		btnSignUp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				System.out.println("signup!");
-				parent.switchScreens("signup");
-				MynimalLauncher.createUser();
+				parent.setScreen("signup");
+				//MynimalLauncher.createUser();
 			}
 		});
 		btnSignUp.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
